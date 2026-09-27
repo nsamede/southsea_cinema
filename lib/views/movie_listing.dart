@@ -55,6 +55,7 @@ class TicketPurchaseMenu extends StatefulWidget {
 
 class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
   double _totalPrice = 0;
+  int _numTickets = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +73,10 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
             DropdownMenu<int>(
               initialSelection: 1,
               onSelected: (int? value) => setState(() {
-                if (value != null) _totalPrice = widget.ticketPrice * value;
+                if (value != null) {
+                  _numTickets = value;
+                  _totalPrice = widget.ticketPrice * _numTickets;
+                }
               }),
               dropdownMenuEntries: [
                 for (int i = 1; i <= widget.maxTickets; i++)
@@ -82,6 +86,15 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
             Text("Adult (£${_totalPrice.toStringAsFixed(2)})")
           ],
         ),
+        ElevatedButton(
+          child: Text("Add to order"),
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(
+                  "Added $_numTickets ${_numTickets > 1 ? "tickets" : "ticket"} to cart! (£${_totalPrice.toStringAsFixed(2)})"),
+            ));
+          },
+        )
       ],
     );
   }
