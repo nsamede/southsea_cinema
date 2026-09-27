@@ -29,32 +29,60 @@ class MovieListing extends StatelessWidget {
               "Van Helsing is enlisted to put a stop to the count's never-ending bloodlust.",
               style: TextStyle(color: cinemaFontWhite),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 10,
-              children: [
-                Text(
-                  "Tickets",
-                  style: cinemaHeaderStyle,
-                ),
-                Row(
-                  spacing: 10,
-                  children: [
-                    DropdownMenu<int>(
-                      initialSelection: 0,
-                      dropdownMenuEntries: [
-                        for (int i = 0; i <= 5; i++)
-                          DropdownMenuEntry(value: i, label: "$i")
-                      ],
-                    ),
-                    Text("Adult (£7.50)")
-                  ],
-                ),
-              ],
-            ),
+            TicketPurchaseMenu(5, 7.50),
           ],
         ),
       ),
+    );
+  }
+}
+
+class TicketPurchaseMenu extends StatefulWidget {
+  final double ticketPrice;
+  final int maxTickets;
+
+  const TicketPurchaseMenu(
+    this.maxTickets,
+    this.ticketPrice, {
+    super.key,
+  });
+
+  @override
+  State<StatefulWidget> createState() {
+    return _TicketPurchaseMenuState();
+  }
+}
+
+class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
+  double _totalPrice = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 10,
+      children: [
+        Text(
+          "Tickets",
+          style: cinemaHeaderStyle,
+        ),
+        Row(
+          spacing: 10,
+          children: [
+            DropdownMenu<int>(
+              initialSelection: 1,
+              onSelected: (int? value) => setState(() {
+                if (value != null) _totalPrice = widget.ticketPrice * value;
+              }),
+              dropdownMenuEntries: [
+                for (int i = 1; i <= widget.maxTickets; i++)
+                  DropdownMenuEntry(value: i, label: "$i")
+              ],
+            ),
+            Text("Adult (£${_totalPrice.toStringAsFixed(2)})")
+          ],
+        ),
+      ],
     );
   }
 }
