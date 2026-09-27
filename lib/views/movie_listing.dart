@@ -16,8 +16,10 @@ class MovieListing extends StatelessWidget {
       ),
       drawer: const NavDrawer(),
       body: Container(
+        padding: EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 30,
           children: [
             Text("DRACULA (1931) (PG)", style: listingHeaderStyle),
             Text(
@@ -26,6 +28,29 @@ class MovieListing extends StatelessWidget {
               "sucking the blood of young women and turning them into vampires. "
               "Van Helsing is enlisted to put a stop to the count's never-ending bloodlust.",
               style: TextStyle(color: cinemaFontWhite),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 10,
+              children: [
+                Text(
+                  "Tickets",
+                  style: cinemaHeaderStyle,
+                ),
+                Row(
+                  spacing: 10,
+                  children: [
+                    DropdownMenu<int>(
+                      initialSelection: 0,
+                      dropdownMenuEntries: [
+                        for (int i = 0; i <= 5; i++)
+                          DropdownMenuEntry(value: i, label: "$i")
+                      ],
+                    ),
+                    Text("Adult (£7.50)")
+                  ],
+                ),
+              ],
             ),
           ],
         ),
