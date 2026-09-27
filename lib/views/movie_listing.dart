@@ -15,7 +15,19 @@ class MovieListing extends StatelessWidget {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-      body: const SizedBox.shrink(),
+      body: Container(
+        child: Column(
+          children: [
+            Text("Dracula"),
+            Text(
+              "The dashing, mysterious Count Dracula (Bela Lugosi) travels to London"
+              " and takes up residence in an old castle. Soon he begins to wreak havoc, "
+              "sucking the blood of young women and turning them into vampires. "
+              "Van Helsing is enlisted to put a stop to the count's never-ending bloodlust."
+            )
+          ],
+        ),
+      ),
     );
   }
 }
