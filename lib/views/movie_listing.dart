@@ -64,6 +64,18 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
       spacing: 10,
       children: [
         Text(
+          "Please note that Discounts/Membership Benefits will be "
+          "applied once you have selected your tickets",
+          style: TextStyle(color: cinemaFontWhite),
+        ),
+        Text(
+          "Select Quantity (up to ${widget.maxTickets} in total)",
+          style: TextStyle(color: cinemaFontWhite),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Text(
           "Tickets",
           style: cinemaHeaderStyle,
         ),
@@ -86,14 +98,17 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
             Text("Adult (£${_totalPrice.toStringAsFixed(2)})")
           ],
         ),
-        ElevatedButton(
-          child: Text("Add to order"),
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(
-                  "Added $_numTickets ${_numTickets > 1 ? "tickets" : "ticket"} to cart! (£${_totalPrice.toStringAsFixed(2)})"),
-            ));
-          },
+        FilledButton(
+          onPressed: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(
+                "Added $_numTickets ${_numTickets > 1 ? "tickets" : "ticket"} to cart! (£${_totalPrice.toStringAsFixed(2)})"),
+          )),
+          style: ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll<Color>(cinemaBrandLight),
+              foregroundColor: WidgetStatePropertyAll<Color>(cinemaFontWhite),
+              shape: WidgetStatePropertyAll<OutlinedBorder>(LinearBorder.none)
+            ),
+          child: Text("ADD TO ORDER"),
         )
       ],
     );
