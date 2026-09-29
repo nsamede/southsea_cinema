@@ -19,16 +19,19 @@ class MovieListing extends StatelessWidget {
         padding: EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 30,
+          spacing: 15,
           children: [
             Text("DRACULA (1931) (PG)", style: listingHeaderStyle),
+            SizedBox(height: 10,),
             Text(
-              "The dashing, mysterious Count Dracula (Bela Lugosi) travels to London"
-              " and takes up residence in an old castle. Soon he begins to wreak havoc, "
-              "sucking the blood of young women and turning them into vampires. "
-              "Van Helsing is enlisted to put a stop to the count's never-ending bloodlust.",
+              "Southsea Cinema Room",
               style: TextStyle(color: cinemaFontWhite),
             ),
+            Text(
+              "Thursday 22 Oct 2026, 18:00 - ends at 19:14",
+              style: TextStyle(color: cinemaFontWhite),
+            ),
+            SizedBox(height: 10,),
             TicketPurchaseMenu(5, 7.50),
           ],
         ),
