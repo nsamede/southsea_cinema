@@ -22,7 +22,9 @@ class MovieListing extends StatelessWidget {
           spacing: 15,
           children: [
             Text("DRACULA (1931) (PG)", style: listingHeaderStyle),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Text(
               "Southsea Cinema Room",
               style: TextStyle(color: cinemaFontWhite),
@@ -31,7 +33,9 @@ class MovieListing extends StatelessWidget {
               "Thursday 22 Oct 2026, 18:00 - ends at 19:14",
               style: TextStyle(color: cinemaFontWhite),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             TicketPurchaseMenu(5, 7.50),
           ],
         ),
@@ -109,8 +113,7 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
           style: ButtonStyle(
               backgroundColor: WidgetStatePropertyAll<Color>(cinemaBrandLight),
               foregroundColor: WidgetStatePropertyAll<Color>(cinemaFontWhite),
-              shape: WidgetStatePropertyAll<OutlinedBorder>(LinearBorder.none)
-            ),
+              shape: WidgetStatePropertyAll<OutlinedBorder>(LinearBorder.none)),
           child: Text("ADD TO ORDER"),
         )
       ],
