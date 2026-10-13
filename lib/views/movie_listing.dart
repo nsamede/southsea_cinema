@@ -61,11 +61,8 @@ class TicketPurchaseMenu extends StatefulWidget {
   final double ticketPrice;
   final int maxTickets;
 
-  const TicketPurchaseMenu ({
-    super.key,
-    required this.ticketPrice,
-    required this.maxTickets
-  });
+  const TicketPurchaseMenu(
+      {super.key, required this.ticketPrice, required this.maxTickets});
 
   @override
   State<StatefulWidget> createState() {
@@ -91,7 +88,6 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
           spacing: 10,
           children: [
             DropdownMenu<int>(
-              initialSelection: 1,
               onSelected: (int? value) => setState(() {
                 if (value != null) {
                   _numTickets = value;
@@ -103,7 +99,7 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
                   DropdownMenuEntry(value: i, label: "$i")
               ],
             ),
-            Text("(£${_totalPrice.toStringAsFixed(2)})")
+            Text("(£${widget.ticketPrice.toStringAsFixed(2)} each)")
           ],
         ),
         FilledButton(
