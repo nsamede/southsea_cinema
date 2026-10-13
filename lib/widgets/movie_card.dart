@@ -10,6 +10,7 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsetsGeometry.all(16),
       elevation: 0,
       color: cinemaBackground,
       child: Column(
