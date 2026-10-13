@@ -7,6 +7,7 @@ class Movie {
   final String imagePath;
   final DateTime start;
   final DateTime end;
+  final double ticketPrice;
 
   Movie({
     required this.id,
@@ -17,6 +18,7 @@ class Movie {
     required this.start,
     required this.end,
     required this.imagePath,
+    required this.ticketPrice,
   });
 
   String getReadableDateTime() {
