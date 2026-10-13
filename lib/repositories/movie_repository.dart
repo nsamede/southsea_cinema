@@ -12,7 +12,7 @@ class MovieRepository {
           location: 'Southsea Cinema Room',
           start: DateTime(2026, 8, 22, 18),
           end: DateTime(2026, 8, 22, 20),
-          imagePath: 'assets/images/spiderman-into-the-spider-verse'),
+          imagePath: 'assets/images/spiderman-into-the-spider-verse.jpg'),
       Movie(
           id: 'the-platform',
           name: 'The Platform',
@@ -22,7 +22,7 @@ class MovieRepository {
           location: 'Southsea Cinema Room',
           start: DateTime(2026, 9, 10, 19),
           end: DateTime(2026, 9, 10, 20, 40),
-          imagePath: 'assets/images/the-platform'),
+          imagePath: 'assets/images/the-platform.jpg'),
     ];
   }
 }
