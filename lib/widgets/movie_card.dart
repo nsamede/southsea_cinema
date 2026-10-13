@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/views/movie_listing.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;
@@ -63,7 +64,13 @@ class MovieCard extends StatelessWidget {
                 style: TextStyle(color: cinemaFontWhite, fontSize: 12),
               ),
               FilledButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return MovieListing(
+                      movie: movie,
+                    );
+                  }));
+                },
                 style: ButtonStyle(
                     backgroundColor:
                         WidgetStatePropertyAll<Color>(cinemaBrandLight),
@@ -74,7 +81,9 @@ class MovieCard extends StatelessWidget {
                 child: Text(
                   "BOOK NOW",
                   style: TextStyle(
-                      color: cinemaFontWhite, fontWeight: FontWeight.bold, fontSize: 15),
+                      color: cinemaFontWhite,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15),
                 ),
               )
             ],

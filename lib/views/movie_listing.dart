@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatelessWidget {
-  const MovieListing({super.key});
+  final Movie movie;
+  
+  const MovieListing({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +24,16 @@ class MovieListing extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 15,
           children: [
-            Text("DRACULA (1931) (PG)", style: listingHeaderStyle),
+            Text("${movie.name.toUpperCase()} (${movie.ageRating})", style: listingHeaderStyle),
             SizedBox(
               height: 10,
             ),
             Text(
-              "Southsea Cinema Room",
+              movie.location,
               style: TextStyle(color: cinemaFontWhite),
             ),
             Text(
-              "Thursday 22 Oct 2026, 18:00 - ends at 19:14",
+              movie.getReadableDateTime(),
               style: TextStyle(color: cinemaFontWhite),
             ),
             SizedBox(
