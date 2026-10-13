@@ -5,7 +5,7 @@ import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatelessWidget {
   final Movie movie;
-  
+
   const MovieListing({super.key, required this.movie});
 
   @override
@@ -22,11 +22,17 @@ class MovieListing extends StatelessWidget {
         padding: EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 15,
+          spacing: 10,
           children: [
-            Text("${movie.name.toUpperCase()} (${movie.ageRating})", style: listingHeaderStyle),
-            SizedBox(
-              height: 10,
+            Text("${movie.name.toUpperCase()} (${movie.ageRating})",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: cinemaFontWhite)),
+            Image.asset(
+              movie.imagePath,
+              height: 200,
+              fit: BoxFit.cover,
             ),
             Text(
               movie.location,
@@ -36,10 +42,14 @@ class MovieListing extends StatelessWidget {
               movie.getReadableDateTime(),
               style: TextStyle(color: cinemaFontWhite),
             ),
-            SizedBox(
-              height: 10,
+            Text(
+              movie.description,
+              style: TextStyle(color: cinemaFontWhite, fontSize: 12),
             ),
-            TicketPurchaseMenu(5, 7.50),
+            TicketPurchaseMenu(
+              ticketPrice: movie.ticketPrice,
+              maxTickets: 5,
+            ),
           ],
         ),
       ),
@@ -51,10 +61,10 @@ class TicketPurchaseMenu extends StatefulWidget {
   final double ticketPrice;
   final int maxTickets;
 
-  const TicketPurchaseMenu(
-    this.maxTickets,
-    this.ticketPrice, {
+  const TicketPurchaseMenu ({
     super.key,
+    required this.ticketPrice,
+    required this.maxTickets
   });
 
   @override
@@ -73,18 +83,6 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 10,
       children: [
-        Text(
-          "Please note that Discounts/Membership Benefits will be "
-          "applied once you have selected your tickets",
-          style: TextStyle(color: cinemaFontWhite),
-        ),
-        Text(
-          "Select Quantity (up to ${widget.maxTickets} in total)",
-          style: TextStyle(color: cinemaFontWhite),
-        ),
-        SizedBox(
-          height: 15,
-        ),
         Text(
           "Tickets",
           style: cinemaHeaderStyle,
@@ -105,7 +103,7 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
                   DropdownMenuEntry(value: i, label: "$i")
               ],
             ),
-            Text("Adult (£${_totalPrice.toStringAsFixed(2)})")
+            Text("(£${_totalPrice.toStringAsFixed(2)})")
           ],
         ),
         FilledButton(
