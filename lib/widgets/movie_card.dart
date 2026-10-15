@@ -60,7 +60,7 @@ class MovieCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                movie.getReadableDateTime(),
+                movie.readableDateTime,
                 style: TextStyle(color: cinemaFontWhite, fontSize: 12),
               ),
               FilledButton(

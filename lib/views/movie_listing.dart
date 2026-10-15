@@ -39,7 +39,7 @@ class MovieListing extends StatelessWidget {
               style: TextStyle(color: cinemaFontWhite),
             ),
             Text(
-              movie.getReadableDateTime(),
+              movie.readableDateTime,
               style: TextStyle(color: cinemaFontWhite),
             ),
             Text(

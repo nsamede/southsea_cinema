@@ -21,7 +21,7 @@ class Movie {
     required this.ticketPrice,
   });
 
-  String getReadableDateTime() {
+  String get readableDateTime {
     Map<int, String> weekdays = {
       1: 'Monday',
       2: 'Tuesday',
