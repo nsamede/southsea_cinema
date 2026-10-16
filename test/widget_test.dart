@@ -55,5 +55,50 @@ void main() {
       await tester.pump();
       expect(find.text('Added 2 tickets to cart! (£15.00)'), findsOneWidget);
     });
+
+    testWidgets(
+        'Navigation to different movie from initial MovieListing displays correct movie',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const SouthseaCinemaApp());
+      await tester.tap(find.text('BOOK NOW').first);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byType(IconButton).last);
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Home'));
+      await tester.pumpAndSettle();
+      expect(find.byType(HomeView), findsOneWidget);
+
+      await tester.tap(find.text('BOOK NOW').last);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(MovieListing), findsOneWidget);
+      expect(find.text('THE PLATFORM (18)'), findsOneWidget);
+      expect(find.text('Southsea Cinema Room'), findsOneWidget);
+      expect(find.text('Tuesday 1 Dec 2026 19:00'), findsOneWidget);
+      expect(
+          find.text(
+              'In a prison where inmates are fed on a descending platform, those on the upper levels take more than their fair share while those below are left to starve on scraps and one man decides to change the system.'),
+          findsOneWidget);
+      expect(find.text('(£6.00 each)'), findsOneWidget);
+    });
+
+    testWidgets('Navigation to different movie shows fresh booking feedback',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const SouthseaCinemaApp());
+      await tester.tap(find.text('BOOK NOW').first);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byType(IconButton).last);
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Home'));
+      await tester.pumpAndSettle();
+      expect(find.byType(HomeView), findsOneWidget);
+
+      await tester.tap(find.text('BOOK NOW').last);
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('ADD TO ORDER'));
+      await tester.pump();
+      expect(find.text('Added 0 tickets to cart! (£0.00)'), findsOneWidget);
+    });
   });
 }
