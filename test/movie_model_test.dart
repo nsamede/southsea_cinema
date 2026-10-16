@@ -30,7 +30,7 @@ void main() {
     });
 
     test(
-        'formattedPrice returns correct price prefixed with pund sign and two decimals',
+        'formattedPrice returns correct price prefixed with pound sign and two decimals',
         () {
       Movie movieWholePound = Movie(
         id: 'the-platform',
