@@ -31,7 +31,7 @@ class MovieListing extends StatelessWidget {
                     color: cinemaFontWhite)),
             Image.asset(
               movie.imagePath,
-              height: 200,
+              height: 190,
               fit: BoxFit.cover,
             ),
             Expanded(
@@ -107,7 +107,7 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
                   DropdownMenuEntry(value: i, label: "$i")
               ],
             ),
-            Text("${widget.movie.formattedPrice} each)")
+            Text("(${widget.movie.formattedPrice} each)")
           ],
         ),
         FilledButton(
