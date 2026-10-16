@@ -47,7 +47,7 @@ class MovieListing extends StatelessWidget {
               style: TextStyle(color: cinemaFontWhite, fontSize: 12),
             ),
             TicketPurchaseMenu(
-              ticketPrice: movie.ticketPrice,
+              movie: movie,
               maxTickets: 5,
             ),
           ],
@@ -58,11 +58,11 @@ class MovieListing extends StatelessWidget {
 }
 
 class TicketPurchaseMenu extends StatefulWidget {
-  final double ticketPrice;
   final int maxTickets;
+  final Movie movie;
 
   const TicketPurchaseMenu(
-      {super.key, required this.ticketPrice, required this.maxTickets});
+      {super.key, required this.movie, required this.maxTickets});
 
   @override
   State<StatefulWidget> createState() {
@@ -91,7 +91,7 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
               onSelected: (int? value) => setState(() {
                 if (value != null) {
                   _numTickets = value;
-                  _totalPrice = widget.ticketPrice * _numTickets;
+                  _totalPrice = widget.movie.ticketPrice * _numTickets;
                 }
               }),
               dropdownMenuEntries: [
@@ -99,7 +99,7 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
                   DropdownMenuEntry(value: i, label: "$i")
               ],
             ),
-            Text("(£${widget.ticketPrice.toStringAsFixed(2)} each)")
+            Text("${widget.movie.formattedPrice} each)")
           ],
         ),
         FilledButton(

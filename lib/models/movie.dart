@@ -48,6 +48,8 @@ class Movie {
     };
 
     return '${weekdays[start.weekday]} ${start.day} ${months[start.month]!.substring(0, 3)} '
-      '${start.year} ${start.hour}:${start.minute == 0 ? '00' : start.minute}';
+        '${start.year} ${start.hour}:${start.minute == 0 ? '00' : start.minute}';
   }
+
+  String get formattedPrice => '£${ticketPrice.toStringAsFixed(2)}';
 }
