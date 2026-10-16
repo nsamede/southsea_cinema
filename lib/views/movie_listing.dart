@@ -21,8 +21,8 @@ class MovieListing extends StatelessWidget {
       body: Container(
         padding: EdgeInsets.all(15),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 10,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("${movie.name.toUpperCase()} (${movie.ageRating})",
                 style: TextStyle(
@@ -34,21 +34,29 @@ class MovieListing extends StatelessWidget {
               height: 200,
               fit: BoxFit.cover,
             ),
-            Text(
-              movie.location,
-              style: TextStyle(color: cinemaFontWhite),
-            ),
-            Text(
-              movie.readableDateTime,
-              style: TextStyle(color: cinemaFontWhite),
-            ),
-            Text(
-              movie.description,
-              style: TextStyle(color: cinemaFontWhite, fontSize: 12),
-            ),
-            TicketPurchaseMenu(
-              movie: movie,
-              maxTickets: 5,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 10,
+                children: [
+                  Text(
+                    movie.location,
+                    style: TextStyle(color: cinemaFontWhite),
+                  ),
+                  Text(
+                    movie.readableDateTime,
+                    style: TextStyle(color: cinemaFontWhite),
+                  ),
+                  Text(
+                    movie.description,
+                    style: TextStyle(color: cinemaFontWhite, fontSize: 12),
+                  ),
+                  TicketPurchaseMenu(
+                    movie: movie,
+                    maxTickets: 5,
+                  ),
+                ],
+              ),
             ),
           ],
         ),
