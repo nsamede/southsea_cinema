@@ -31,7 +31,7 @@ class MovieListing extends StatelessWidget {
                     color: cinemaFontWhite)),
             Image.asset(
               movie.imagePath,
-              height: 190,
+              height: 150,
               fit: BoxFit.cover,
             ),
             Expanded(
