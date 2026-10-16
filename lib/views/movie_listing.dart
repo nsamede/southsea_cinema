@@ -113,7 +113,7 @@ class _TicketPurchaseMenuState extends State<TicketPurchaseMenu> {
         FilledButton(
           onPressed: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(
-                "Added $_numTickets ${_numTickets > 1 ? "tickets" : "ticket"} to cart! (£${_totalPrice.toStringAsFixed(2)})"),
+                "Added $_numTickets ${_numTickets > 1 || _numTickets == 0 ? "tickets" : "ticket"} to cart! (£${_totalPrice.toStringAsFixed(2)})"),
           )),
           style: ButtonStyle(
               backgroundColor: WidgetStatePropertyAll<Color>(cinemaBrandLight),
